@@ -16,6 +16,9 @@
   "entrypoints": {
     "main": [
       "io.github.simplexdev.quickconnectbutton.QuickConnectButtonMain"
+    ],
+    "modmenu": [
+      "io.github.simplexdev.quickconnectbutton.config.ModMenuIntegration"
     ]
   },
   "mixins": [

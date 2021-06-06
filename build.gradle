@@ -12,13 +12,6 @@ group = project.maven_group
 
 repositories {
     maven { url "https://maven.shedaniel.me/" }
-    maven {
-        name = "TerraformersMC"
-        url = "https://maven.terraformersmc.com/releases/"
-        content {
-            includeGroup "com.terraformersmc"
-        }
-    }
 }
 
 dependencies {
@@ -36,9 +29,6 @@ dependencies {
         exclude(group: "net.fabricmc.fabric-api")
     }
     include("me.shedaniel.cloth:cloth-config-fabric:5.0.34")
-
-    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive(false); }
-    include("com.terraformersmc:modmenu:${project.modmenu_version}")
 }
 
 processResources {

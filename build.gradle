@@ -87,13 +87,3 @@ publishing {
         // mavenLocal()
     }
 }
-
-task publishModrinth(type: TaskModrinthUpload) {
-    String apiToken
-    token = apiToken
-    projectId = 'erzkR85H'
-    versionNumber = "${project.mod_version}"
-    uploadFile = remapJar
-    addGameVersion("${project.minecraft_version}")
-    addLoader("fabric")
-}

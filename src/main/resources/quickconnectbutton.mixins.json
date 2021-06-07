@@ -3,10 +3,9 @@
   "minVersion": "0.8",
   "package": "io.github.simplexdev.quickconnectbutton.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-    "TitleScreenMixin"
-  ],
+  "mixins": [],
   "client": [
+    "TitleScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

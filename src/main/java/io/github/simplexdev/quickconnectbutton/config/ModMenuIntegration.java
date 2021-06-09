@@ -1,12 +1,19 @@
 package io.github.simplexdev.quickconnectbutton.config;
 
-import com.terraformersmc.modmenu.api.ConfigScreenFactory;
-import com.terraformersmc.modmenu.api.ModMenuApi;
-import me.shedaniel.autoconfig.AutoConfig;
+import io.github.prospector.modmenu.api.ModMenuApi;
+import io.github.simplexdev.quickconnectbutton.QuickConnectButtonMain;
+import net.minecraft.client.gui.screen.Screen;
+
+import java.util.function.Function;
 
 public class ModMenuIntegration implements ModMenuApi {
     @Override
-    public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> AutoConfig.getConfigScreen(QuickConnectButtonConfig.class, parent).get();
+    public Function<Screen, ? extends Screen> getConfigScreenFactory() {
+        return OptionScreen::new;
+    }
+
+    @Override
+    public String getModId() {
+        return QuickConnectButtonMain.MOD_ID;
     }
 }

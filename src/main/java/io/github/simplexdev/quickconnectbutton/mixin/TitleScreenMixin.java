@@ -23,12 +23,10 @@ public class TitleScreenMixin extends Screen {
 
     @Inject(method = "buttonClicked", at = @At("HEAD"))
     protected void buttonClicked(ButtonWidget button, CallbackInfo ci) {
-        if (button.active && button.id == QuickConnectButtonId) {
+        if (button.id == QuickConnectButtonId) {
             String address = ConfigManager.getConfig().address;
             this.client.openScreen(new ConnectScreen(this, this.client, new ServerInfo(I18n.translate("selectServer.defaultName"), address, false)));
         }
-
-        super.buttonClicked(button);
     }
 
     @Inject(method = "initWidgetsNormal", at = @At("TAIL"))

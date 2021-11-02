@@ -30,7 +30,7 @@ public class TitleScreenMixin extends Screen {
 
     @Inject(method = "initWidgetsNormal", at = @At(value = "TAIL"))
     private void addCustomButton(int y, int spacingY, CallbackInfo ci) {
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100 + 205, y, 50, 20, new LiteralText("Connect"), (buttonWidget) -> {
+        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100 + 205, y, 50, 20, new LiteralText(config.connectButton), (buttonWidget) -> {
             ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), new ServerInfo(I18n.translate("selectServer.defaultName"), config.address, false));
         }));
     }

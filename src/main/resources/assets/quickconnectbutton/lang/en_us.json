@@ -1,4 +1,6 @@
 {
     "text.autoconfig.quickconnectbutton.title": "Quick Connect Button",
-    "text.autoconfig.quickconnectbutton.option.address": "Server Address"
+    "text.autoconfig.quickconnectbutton.option.address": "Server Address",
+    "text.autoconfig.quickconnectbutton.option.connectButton": "Button Name"
+
 }

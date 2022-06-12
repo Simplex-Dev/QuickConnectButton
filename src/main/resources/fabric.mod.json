@@ -27,9 +27,6 @@
     "quickconnectbutton.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.12.12",
-    "fabric": "*",
-    "minecraft": ["1.17.x","1.18.x"],
-    "java": ">=16"
+    "cloth-config": "*"
   }
 }

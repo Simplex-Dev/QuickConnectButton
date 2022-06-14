@@ -27,6 +27,7 @@
     "quickconnectbutton.mixins.json"
   ],
   "depends": {
+    "java": ">=17",
     "cloth-config": "*"
   }
 }

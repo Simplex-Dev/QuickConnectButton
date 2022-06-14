@@ -8,6 +8,6 @@ import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 public class QuickConnectButtonConfig implements ConfigData {
     @Comment("The address to connect to when the Connect button is pressed.")
     public String address = "localhost";
-	@Comment("The name of the Button.")
+    @Comment("The name of the Button.")
     public String connectButton = "Connect";
 }

@@ -29,8 +29,14 @@ public class TitleScreenMixin extends Screen {
 
     @Inject(method = "initWidgetsNormal", at = @At(value = "TAIL"))
     private void addCustomButton(int y, int spacingY, CallbackInfo ci) {
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100 + 205, y, 50, 20, Text.literal(config.connectButton), (buttonWidget) -> {
-            ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), new ServerInfo(I18n.translate("selectServer.defaultName"), config.address, false));
-        }));
+        int offsetX;
+
+        if (config.showLeft) {
+            offsetX = -128 - (config.dimensions.width / 2);
+        } else {
+            offsetX = 105;
+        }
+
+        this.addDrawableChild(new ButtonWidget(this.width / 2 + offsetX, y, config.dimensions.width, config.dimensions.height, Text.literal(config.connectButton), (buttonWidget) -> ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), new ServerInfo(I18n.translate("selectServer.defaultName"), config.address, false))));
     }
 }

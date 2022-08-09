@@ -31,7 +31,7 @@ public class TitleScreenMixin extends Screen {
     private void addCustomButton(int y, int spacingY, CallbackInfo ci) {
         int offsetX = 0;
 
-        switch(config.buttonAlign) {
+        switch (config.buttonAlign) {
             case LEFT -> offsetX = -128 - (config.dimensions.width / 2);
             case RIGHT -> offsetX = 105;
         }
@@ -44,6 +44,11 @@ public class TitleScreenMixin extends Screen {
             case PROMPT -> info.setResourcePackPolicy(ServerInfo.ResourcePackPolicy.PROMPT);
         }
 
-        this.addDrawableChild(new ButtonWidget(this.width / 2 + offsetX, y, config.dimensions.width, config.dimensions.height, Text.literal(config.connectButton), (buttonWidget) -> ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), info)));
+        this.addDrawableChild(new ButtonWidget(this.width / 2 + offsetX, y, config.dimensions.width, config.dimensions.height, Text.literal(config.connectButton),
+                (buttonWidget) -> {
+                    ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), info);
+                    buttonWidget.playDownSound(this.client.getSoundManager());
+                }
+        ));
     }
 }

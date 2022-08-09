@@ -29,14 +29,21 @@ public class TitleScreenMixin extends Screen {
 
     @Inject(method = "initWidgetsNormal", at = @At(value = "TAIL"))
     private void addCustomButton(int y, int spacingY, CallbackInfo ci) {
-        int offsetX;
+        int offsetX = 0;
 
-        if (config.showLeft) {
-            offsetX = -128 - (config.dimensions.width / 2);
-        } else {
-            offsetX = 105;
+        switch(config.buttonAlign) {
+            case LEFT -> offsetX = -128 - (config.dimensions.width / 2);
+            case RIGHT -> offsetX = 105;
         }
 
-        this.addDrawableChild(new ButtonWidget(this.width / 2 + offsetX, y, config.dimensions.width, config.dimensions.height, Text.literal(config.connectButton), (buttonWidget) -> ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), new ServerInfo(I18n.translate("selectServer.defaultName"), config.address, false))));
+        ServerInfo info = new ServerInfo(I18n.translate("selectServer.defaultName"), config.address, false);
+
+        switch (config.resourcePackPolicy) {
+            case ALLOW -> info.setResourcePackPolicy(ServerInfo.ResourcePackPolicy.ENABLED);
+            case DENY -> info.setResourcePackPolicy(ServerInfo.ResourcePackPolicy.DISABLED);
+            case PROMPT -> info.setResourcePackPolicy(ServerInfo.ResourcePackPolicy.PROMPT);
+        }
+
+        this.addDrawableChild(new ButtonWidget(this.width / 2 + offsetX, y, config.dimensions.width, config.dimensions.height, Text.literal(config.connectButton), (buttonWidget) -> ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), info)));
     }
 }

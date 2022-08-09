@@ -1,6 +1,10 @@
 {
     "text.autoconfig.quickconnectbutton.title": "Quick Connect Button",
     "text.autoconfig.quickconnectbutton.option.address": "Server Address",
-    "text.autoconfig.quickconnectbutton.option.connectButton": "Button Name"
-
+    "text.autoconfig.quickconnectbutton.option.connectButton": "Button Name",
+    "text.autoconfig.quickconnectbutton.option.buttonAlign": "Button Alignment",
+    "text.autoconfig.quickconnectbutton.option.dimensions": "Button Dimensions",
+    "text.autoconfig.quickconnectbutton.option.dimensions.width": "Width",
+    "text.autoconfig.quickconnectbutton.option.dimensions.height": "Height",
+    "text.autoconfig.quickconnectbutton.option.resourcePackPolicy": "Resource Pack Policy"
 }

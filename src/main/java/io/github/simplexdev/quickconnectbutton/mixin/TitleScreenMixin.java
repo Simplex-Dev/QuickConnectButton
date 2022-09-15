@@ -11,6 +11,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.network.ServerAddress;
 import net.minecraft.client.network.ServerInfo;
 import net.minecraft.client.resource.language.I18n;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -31,8 +32,11 @@ public class TitleScreenMixin extends Screen {
     private void addCustomButton(int y, int spacingY, CallbackInfo ci) {
         int offsetX = 0;
 
+        MutableText text = Text.literal(config.connectButton);
+        int width = Math.max(config.dimensions.width, textRenderer.getWidth(text) + 20);
+
         switch (config.buttonAlign) {
-            case LEFT -> offsetX = -128 - (config.dimensions.width / 2);
+            case LEFT -> offsetX = -128 - (width / 2);
             case RIGHT -> offsetX = 105;
         }
 
@@ -44,11 +48,11 @@ public class TitleScreenMixin extends Screen {
             case PROMPT -> info.setResourcePackPolicy(ServerInfo.ResourcePackPolicy.PROMPT);
         }
 
-        this.addDrawableChild(new ButtonWidget(this.width / 2 + offsetX, y, config.dimensions.width, config.dimensions.height, Text.literal(config.connectButton),
-                (buttonWidget) -> {
-                    ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), info);
-                    buttonWidget.playDownSound(this.client.getSoundManager());
-                }
+        this.addDrawableChild(new ButtonWidget(this.width / 2 + offsetX, y, width, config.dimensions.height, text,
+            (buttonWidget) -> {
+                ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), info);
+                buttonWidget.playDownSound(this.client.getSoundManager());
+            }
         ));
     }
 }

@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.12.+'
+    id 'fabric-loom' version '1.0.+'
     id 'maven-publish'
 }
 
@@ -25,10 +25,7 @@ dependencies {
 
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
     // You may need to force-disable transitiveness on them.
-    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    include("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+    modApi include("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
 }

@@ -47,11 +47,11 @@ public class TitleScreenMixin extends Screen {
             case PROMPT -> info.setResourcePackPolicy(ServerInfo.ResourcePackPolicy.PROMPT);
         }
 
-        this.addDrawableChild(new ButtonWidget(this.width / 2 + offsetX, y, width, config.dimensions.height, text,
-            (buttonWidget) -> {
-                ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), info);
-                buttonWidget.playDownSound(this.client.getSoundManager());
-            }
-        ));
+        var button = new ButtonWidget.Builder(Text.literal(config.connectButton), (buttonWidget) -> {
+            ConnectScreen.connect(this, this.client, ServerAddress.parse(config.address), info);
+            buttonWidget.playDownSound(this.client.getSoundManager());
+        }).dimensions(this.width / 2 + offsetX, y, config.dimensions.width, config.dimensions.height).build();
+
+        this.addDrawableChild(button);
     }
 }

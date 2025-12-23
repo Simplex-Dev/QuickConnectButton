@@ -31,8 +31,11 @@ public class TitleScreenMixin extends Screen {
     private void addCustomButton(int y, int spacingY, CallbackInfo ci) {
         int offsetX = 0;
 
+        Text text = Text.literal(config.connectButton);
+        int width = Math.max(config.dimensions.width, textRenderer.getWidth(text) + 20);
+
         switch (config.buttonAlign) {
-            case LEFT -> offsetX = -128 - (config.dimensions.width / 2);
+            case LEFT -> offsetX = -128 - (width / 2);
             case RIGHT -> offsetX = 105;
         }
 
